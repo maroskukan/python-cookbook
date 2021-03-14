@@ -41,6 +41,7 @@ Some key characteristics of this language include:
 
 I have found the following websites very useful when learning Python.
 - [Python Project](https://www.python.org/)
+- [Pypi](https://pypi.python.org)
 - [Python Playground](https://www.katacoda.com/courses/python/playground)
 
 ## Environment
@@ -63,6 +64,8 @@ On Mac, you can levelrage [HomeBrew](https://brew.sh/), the unoficial Mac OS pac
 ```bash
 brew install python3
 ```
+
+The Python package manager `pip` is also included with installation by default.
 
 ### Remote environment
 
