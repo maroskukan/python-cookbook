@@ -117,3 +117,33 @@ def countdown(x):
 
 countdown(5)
 ```
+
+## Sorting
+
+- Most modern language have sorting built in
+- The bubble sort
+- The merge sort
+- The quicksort
+
+### Bubble sort
+
+- Very simple to understand and implement
+- Performance: O(n²)
+  - For lopps inside of for loops are usually n²
+- Other sorting algorithms are generally much better
+- Not considered to be a practical solution
+
+### Merge sort
+
+- Divide and conquer algorithm
+- Breaks a dataset into individual pieces and merges them
+- Uses recursion to operate on datasets
+- Performs well on large sets of data
+- In general has a perfomrnace of O(n log n) time complexity
+
+### Quick sort
+
+- Divide and conquer algorithm
+- Also uses recursion to perform sorting
+- Generally performs better than merge sort O(n log n)
+
