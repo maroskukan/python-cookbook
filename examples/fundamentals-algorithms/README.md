@@ -96,3 +96,24 @@ Common usege:
 - Hash tables are typically very fast
 - For small datasets, arrays are usually more efficient
 - Hash tables don't order entries in a predictable way
+
+
+## Recursion
+
+- Recursion is when a function calls itself.
+- Recursive functions need to have a breaking condition
+- This prevents infinite loops and eventual crashes
+- Each time the function is called, the old arguments are saved
+- This is called the "call stack"
+
+```python
+def countdown(x):
+  if (x == 0):
+    print("done")
+    return
+  else:
+    print(x,"...")
+    countdown(x-1)
+
+countdown(5)
+```
