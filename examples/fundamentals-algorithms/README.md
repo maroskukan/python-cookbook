@@ -147,3 +147,10 @@ countdown(5)
 - Also uses recursion to perform sorting
 - Generally performs better than merge sort O(n log n)
 
+
+## Searching
+
+- Searching an ordered list
+- Searching an unordered list
+- Determining if the list is ordered or unordered
+
