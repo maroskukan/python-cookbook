@@ -34,7 +34,7 @@ Some key characteristics of this language include:
 - **Unique Syntax**, uses significant whitespace as oppose to C-like Syntax (`{}`, `;`)
 - **General purpose**, covers different use cases with its standard and 3rd party libraries
 - **Multi-paradigm**, supports structured, functional and object-oriented programming
-- **Interpreted**, language runtime handles the code translation as opposed to compiled language. 
+- **Interpreted**, language runtime handles the code translation as opposed to compiled language.
 - **Garbage-collected**, data in memory that is no longer used needs to be cleaned. Python does this automatically
 - **Dynamically-types**, no need to define the data type during variable initialization, as opposed to static typed languages
 
@@ -47,6 +47,7 @@ I have found the following websites very useful when learning Python.
 - [Virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
 - [Pylint](https://www.pylint.org/)
 - [Python Playground](https://www.katacoda.com/courses/python/playground)
+- [Jdoodle](https://www.jdoodle.com/)
 
 ## Environment
 
@@ -90,7 +91,7 @@ pip install virtualenvwrapper
 After you installed the package, you need to update your shell's configuration, in case of zsh, you need to add following lines to `.zshrc`.
 
 ```bash
-# Virtualenvwrapper configuration           
+# Virtualenvwrapper configuration
 export WORKON_HOME=$HOME/.virtualenvs
 source $HOME/.local/bin/virtualenvwrapper.sh
 ```
