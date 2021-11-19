@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<person>
+  <firstname>Maros</firstname>
+  <lastname>Kukan</lastname>
+  <home>Earth</home>
+  <skill name="Python"/>
+  <skill name="Ansible"/>
+  <skill name="Bash"/>
+  <skill name="Html"/>
+</person>
