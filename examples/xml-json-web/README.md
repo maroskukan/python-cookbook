@@ -109,3 +109,47 @@ Parsing JSON into Python
 | Floating point number | float         |
 | true, false           | True, False   |
 | null                  | None          |
+
+### xml
+
+There are two general methods working with XML
+
+- SAX (Simple API for XML)
+- DOM (Document Object Model)
+
+SAX Parsing Model
+
+- Reads entire document start to finish, sequentially
+- Generates events as XML content is encoutered
+- Your app defines a class to handle content events
+
+Advantages
+
+- Memory efficient - does not need to load entire doc
+- Fast - your app only gets events it cares about
+- Easy to implement, simple API
+
+Drawbacks
+
+- No random access to doc content
+- Context is not passed to parser
+- Cannot modify the XML file
+
+SAX API
+
+```python
+import xml.sax
+
+xml.sax.parse(file, handler)
+xml.sax.parseString(string, handler)
+
+class MyContentHandler(xml.saxContentHandler)
+   def __init__(self):
+     # member variables go here
+   def startDocument(self):
+     # Processing starting
+   def startElement(self, tagName, attrs):
+     # opening tag and attrs have been parsed
+   def characters(self, text):
+     # member variables go here
+```
