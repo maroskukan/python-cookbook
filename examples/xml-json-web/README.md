@@ -117,6 +117,8 @@ There are two general methods working with XML
 - SAX (Simple API for XML)
 - DOM (Document Object Model)
 
+#### Simple API for XML
+
 SAX Parsing Model
 
 - Reads entire document start to finish, sequentially
@@ -153,3 +155,36 @@ class MyContentHandler(xml.saxContentHandler)
    def characters(self, text):
      # member variables go here
 ```
+
+#### Document Object Model API
+
+- Access any part of an XML structure at random
+- Modify the XML content
+- Represents the XML as a hierarchical tree structure
+
+*xml.dom.minidom is a lightweight implementation*
+
+```python
+import xml.dom.minidom
+
+domtree = xml.dom.minidom.parseString(str)
+
+elem.getElementById(id)
+elem.getElementByTagName(tagname)
+
+elem.getAttribute(attrName)
+elem.setAttribute(attrName, val)
+
+newElem = document.createElement(tagName)
+newElem = document.createTextNode(strOfText)
+elem.appendChild(newElem)
+```
+
+#### ElementTree API
+
+- Focuses on being simpler and more efficient than DOM
+- Elements are treated like lists
+- Attributes are treated like dictionaries
+- Searching for content in XML is streaighforwarded
+  - elem.findall(queryExpression)
+
