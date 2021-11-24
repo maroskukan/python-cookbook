@@ -75,3 +75,37 @@ Im summary, urllib is simpe to use but does have some limitations such as:
 - Automatically parses JSON content when detected
 - Handles redirects, timeouts, and errors
 - Advanced features like authentication and sessions
+
+### json
+
+Parsing functions:
+- obj = load(file)
+- obj = loads(string)
+
+Serialization functions:
+- dump(obj, file)
+- str = dumps(obj)
+
+Serializing Python Data to JSON
+
+| Python Object           | JSON Representation |
+| ----------------------- | ------------------- |
+| dict                    | object              |
+| list, tuple             | array               |
+| str                     | string              |
+| int, long, float, Enums | number              |
+| True                    | true                |
+| False                   | false               |
+| None                    | null                |
+
+Parsing JSON into Python
+
+| JSON Data             | Python Object |
+| --------------------- | ------------- |
+| object                | dict          |
+| array                 | list          |
+| string                | str           |
+| Integer number        | int           |
+| Floating point number | float         |
+| true, false           | True, False   |
+| null                  | None          |
