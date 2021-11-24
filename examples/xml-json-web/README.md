@@ -66,3 +66,12 @@ Im summary, urllib is simpe to use but does have some limitations such as:
 - Common features, such as cookies or authentication require more modules
 - Difficult to implement advanced features such as timeouts
 - Processing returned data, such as JSON is cumbersome
+
+### request
+
+- Simple API - each HTTP verb is a method name
+- Makes working with parameters, headers, and cookies easier
+- Automatically decodes returned content
+- Automatically parses JSON content when detected
+- Handles redirects, timeouts, and errors
+- Advanced features like authentication and sessions
