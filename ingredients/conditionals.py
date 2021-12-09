@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from datetime import date
+from datetime import datetime
 import calendar
 
 
@@ -48,7 +49,8 @@ def main():
             print("No special today.")
 
     # Get the name of the day and used that as an argument
-    today = calendar.day_name[date.today().weekday()]
+    # today = calendar.day_name[date.today().weekday()]
+    today = datetime.today().strftime("%A")
     order(today)
 
 
