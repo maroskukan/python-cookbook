@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import random
+
 
 def main():
     x = 0
@@ -45,6 +47,68 @@ def main():
 
     for i, m in enumerate(months):
         print("Index", i, "Value", m)
+
+    # dirty dishes in the sink
+    sink = ["bowl", "cup", "plate", "fork", "knife"]
+
+    # iterate over the new sink list, print each item and remove dish from original list
+    for dish in list(sink):
+        print(f"Putting {dish} in the dishwasher")
+        sink.remove(dish)
+
+    # print the sink list
+    print(sink)
+
+    # scrubbing a stuborn pan
+    dirty = True
+    scrub_count = 0
+
+    while dirty:
+        scrub_count += 1
+        print(f"Scrub the pan: {scrub_count}")
+
+        print("Rinse & check if the pan is clean.")
+        if not random.randint(0, 9):
+            print("Pan is clean!")
+            dirty = False
+        else:
+            print("Still dirty...")
+
+        # Statement below always runs
+        print("...")
+
+    # putting away clean dishes
+    dishwasher = [
+        "plate",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "cup",
+        "spatula",
+        "ladle",
+        "saucepan",
+        "cup",
+        "spatula",
+        "ladle",
+        "saucepan",
+        "cup",
+        "plate",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "cup",
+    ]
+
+    # iterate over the new dishwasher list, break from loop if randint returns 0
+    for dish in list(dishwasher):
+        if not random.randint(0, 19):
+            print("Out of space!")
+            break
+        else:
+            print(f"Putting {dish} in the cabinet")
+            dishwasher.remove(dish)
 
 
 if __name__ == "__main__":
