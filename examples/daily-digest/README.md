@@ -20,3 +20,17 @@ In order to retrieve data from [Twitter](https://twitter.com), you need to make 
 export TWT_API_KEY=pkfeaLKilhfajioH@Qhfwaszw
 export TWT_SECRET_KEY=jkfLAISJF5056WOPJFA8400ifal43lljkkljo8nfkjqnioj289
 ```
+
+## Messaging
+
+### Email Support
+
+In order to send the email digest, you need to make sure the following system variables exists and are valid.
+
+```bash
+# Example credentials
+export EMAIL_USER=0foap20rsflakf
+export EMAIL_PASS=opgkapojsgiwoa
+```
+
+These are being used to send outgoing mail to SMTP server hosted at [mailtrap.io](https://mailtrap.io)

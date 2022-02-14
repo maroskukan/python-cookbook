@@ -1,5 +1,9 @@
 import dd_content
 import datetime
+import smtplib
+from email.message import EmailMessage
+import os
+from socket import gaierror
 
 
 class DailyDigestEmail:
@@ -14,8 +18,40 @@ class DailyDigestEmail:
             },
         }
 
+        self.recipients_list = ["maros.kukan@example.com", "french.bulldog@example.com"]
+
+        self.sender_credentials = {
+            "email": "dailydigest@example.com",
+            "username": os.environ.get("EMAIL_USER"),
+            "password": os.environ.get("EMAIL_PASS"),
+        }
+
     def send_email(self):
-        pass
+        # build email message
+        msg = EmailMessage()
+        msg["Subject"] = f'Daily Digest - {datetime.date.today().strftime("%d %b %Y")}'
+        msg["From"] = self.sender_credentials["email"]
+        msg["To"] = ", ".join(self.recipients_list)
+
+        # add plaintext and HTML content
+        msg_body = self.format_message()
+        msg.set_content(msg_body["text"])
+        msg.add_alternative(msg_body["html"], subtype="html")
+
+        with smtplib.SMTP("smtp.mailtrap.io", 2525) as server:
+            try:
+                server.login(
+                    self.sender_credentials["username"],
+                    self.sender_credentials["password"],
+                )
+                server.send_message(msg)
+                print("Daily Digest sent out successfully.")
+            except (gaierror, ConnectionRefusedError):
+                print("Failed to connect to the server. Bad connection settings?")
+            except smtplib.SMTPServerDisconnected:
+                print("Failed to connect to the server. Wrong user/password?")
+            except smtplib.SMTPException as e:
+                print("SMTP error occurred: " + str(e))
 
     def format_message(self):
         ################################
@@ -145,3 +181,7 @@ if __name__ == "__main__":
         f.write(message["text"])
     with open("message_html.html", "w", encoding="utf-8") as f:
         f.write(message["html"])
+
+    ##### test send_email() method #####
+    print("\nSending test email...")
+    email.send_email()
