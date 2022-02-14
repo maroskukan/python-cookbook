@@ -3,6 +3,8 @@ import csv
 import random
 from urllib import request
 import json
+from webbrowser import get
+import tweepy
 import os
 
 
@@ -35,10 +37,10 @@ def get_weather_forecast(
     coords={"lat": 28.4717, "lon": -80.5378}
 ):  # default location at Cape Canaveral
     try:  # retrieve forecast for specified coordinates
-        OW_API_KEY = os.environ.get(
+        api_key = os.environ.get(
             "OW_API_KEY"
         )  # load OpenWeatherMap API key from environment variable
-        url = f'https://api.openweathermap.org/data/2.5/forecast?lat={coords["lat"]}&lon={coords["lon"]}&units=metric&appid={OW_API_KEY}'
+        url = f'https://api.openweathermap.org/data/2.5/forecast?lat={coords["lat"]}&lon={coords["lon"]}&units=metric&appid={api_key}'
         data = json.load(request.urlopen(url))
 
         forecast = {
@@ -62,8 +64,24 @@ def get_weather_forecast(
         print(f"\nWeather forecast not available.")
 
 
-def get_twitter_trends():
-    pass
+"""
+Retrieve the current trends from Twitter.
+"""
+
+
+def get_twitter_trends(woeid=23424977):  # default WOEID for United States
+    try:  # retrieve Twitter trends for specified location
+        api_key = os.environ.get(
+            "TWT_API_KEY"
+        )  # load Twitter API key from environment variable
+        api_secret_key = os.environ.get(
+            "TWT_SECRET_KEY"
+        )  # load Twitter Secret key from environment variable
+        auth = tweepy.AppAuthHandler(api_key, api_secret_key)
+        return tweepy.API(auth).get_place_trends(woeid)[0]["trends"]
+
+    except Exception as e:
+        print(e)
 
 
 def get_wikipedia_article():
@@ -91,8 +109,13 @@ if __name__ == "__main__":
                 f' - {period["timestamp"]} | {period["temp"]}°C | {period["description"]}'
             )
 
-    slovakia = { "lat": 49.1666, "lon": 20.1316, }  # coordinates for Novy Smokovec, Slovakia
-    forecast = get_weather_forecast( coords = slovakia )  # get forecast for Novy Smokovec, Slovakia
+    slovakia = {
+        "lat": 49.1666,
+        "lon": 20.1316,
+    }  # coordinates for Novy Smokovec, Slovakia
+    forecast = get_weather_forecast(
+        coords=slovakia
+    )  # get forecast for Novy Smokovec, Slovakia
     if forecast:
         print(f'\nWeather forecast for {forecast["city"]}, {forecast["country"]} is...')
         for period in forecast["periods"]:
@@ -101,6 +124,27 @@ if __name__ == "__main__":
             )
 
     invalid = {"lat": 1234.5678, "lon": 1234.5678}  # invalid coordinates
-    forecast = get_weather_forecast( coords = invalid)  # get forecast for invalid coordinates
+    forecast = get_weather_forecast(
+        coords=invalid
+    )  # get forecast for invalid coordinates
     if forecast is None:
         print("Weather forecast for invalid coordinates returned None")
+
+    ##### test get_twitter_trends() #####
+    print("\nTesting Twitter trends retrieval...")
+
+    trends = get_twitter_trends()  # get trends for default location of United States
+    if trends:
+        print("\nTop 10 Twitter trends in the United States are...")
+        for trend in trends[0:10]:  # show top ten
+            print(f' - {trend["name"]}: {trend["url"]}')
+
+    trends = get_twitter_trends(woeid=44418)  # get trends for London
+    if trends:
+        print("\nTop 10 Twitter trends in London are...")
+        for trend in trends[0:10]:  # show top ten
+            print(f' - {trend["name"]}: {trend["url"]}')
+
+    trends = get_twitter_trends(woeid=-1)  # invalid WOEID
+    if trends is None:
+        print("Twitter trends for invalid WOEID returned None")
