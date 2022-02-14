@@ -85,7 +85,20 @@ def get_twitter_trends(woeid=23424977):  # default WOEID for United States
 
 
 def get_wikipedia_article():
-    pass
+    """
+    Retrieve the summary extract for a random Wikipedia article
+    """
+    try:  # retrieve random Wikipedia article
+        data = json.load(
+            request.urlopen("https://en.wikipedia.org/api/rest_v1/page/random/summary")
+        )
+        return {
+            "title": data["title"],
+            "extract": data["extract"],
+            "url": data["content_urls"]["desktop"]["page"],
+        }
+    except Exception as e:
+        print(e)
 
 
 if __name__ == "__main__":
@@ -148,3 +161,10 @@ if __name__ == "__main__":
     trends = get_twitter_trends(woeid=-1)  # invalid WOEID
     if trends is None:
         print("Twitter trends for invalid WOEID returned None")
+
+    ##### test get_wikipedia_article() #####
+    print("\nTesting random Wikipedia article retrieval...")
+
+    article = get_wikipedia_article()
+    if article:
+        print(f'\n{article["title"]}\n<{article["url"]}>\n{article["extract"]}')
