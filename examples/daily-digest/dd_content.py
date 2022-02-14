@@ -55,7 +55,7 @@ def get_weather_forecast(
                     "timestamp": datetime.datetime.fromtimestamp(period["dt"]),
                     "temp": round(period["main"]["temp"]),
                     "description": period["weather"][0]["description"].title(),
-                    "icon": f'http//openweathermap.org/img/wm/{period["weather"][0]["icon"]}.png',
+                    "icon": f'http://openweathermap.org/img/wn/{period["weather"][0]["icon"]}.png',
                 }
             )
         return forecast
