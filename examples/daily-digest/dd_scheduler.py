@@ -17,12 +17,12 @@ class DailyDigestScheduler(threading.Thread):
         schedule.every().day.at(f"{hour:02d}:{minute:02d}").do(job)
 
     """
-    Start the scheduler as a background thread
+    Start the scheduler as a background thread.
     """
 
     def run(self):
         self.__stop_running.clear()
-        while not self.__stop_running.set():
+        while not self.__stop_running.is_set():
             schedule.run_pending()
             time.sleep(1)
 
