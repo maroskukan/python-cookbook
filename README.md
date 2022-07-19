@@ -9,6 +9,8 @@
     - [Remote environment](#remote-environment)
   - [Virtual environment](#virtual-environment)
   - [Code Linting](#code-linting)
+  - [Tips](#tips)
+    - [Quick http server](#quick-http-server)
 
 ## Introduction
 
@@ -183,4 +185,12 @@ pylint ../vmware-vra/recipes/vra_requests.py
 
 -------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 7.24/10, +2.76)
+```
+
+## Tips
+
+### Quick http server
+
+```bash
+python -m http.server 3003
 ```
