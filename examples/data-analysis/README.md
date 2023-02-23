@@ -12,3 +12,25 @@ pyenv virtualenv 3.11.1 data-analysis
 pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
+
+
+## Interconnected calculations
+
+### Processing
+
+There are two types of data processing:
+
+Transactional Processing
+- Ensures correctness of individual entries
+- Access to recent data, from the last few hours or days
+- Updates data
+- Fast real-time access
+- Usually a single data source
+
+Analytical Processing:
+- Analyzes large batches of data
+- Access to older data going back months or even years
+- Mostly reads data
+- Long running jobs
+- Multiple data sources
+
